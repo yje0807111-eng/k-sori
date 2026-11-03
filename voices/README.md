@@ -6,7 +6,7 @@
 녹음 파일(또는 녹음이 들어 있는 폴더)을 주면 알아서 조각을 만듭니다.
 
 ```
-knarr.bat add-voice 내목소리 D:\녹음\내목소리 --gender 남
+ksori.bat add-voice 내목소리 D:\녹음\내목소리 --gender 남
 ```
 
 ## 직접 만들 때 폴더 모양

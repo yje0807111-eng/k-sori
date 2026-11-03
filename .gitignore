@@ -8,3 +8,5 @@ voices/*/
 *.wav
 *.mp3
 설치_시험로그.txt
+emotions/
+*.pt

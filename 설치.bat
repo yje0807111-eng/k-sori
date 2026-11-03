@@ -2,7 +2,7 @@
 chcp 65001 >nul
 set PYTHONUTF8=1
 cd /d "%~dp0"
-echo ===== K-Narrator 설치 =====
+echo ===== K-Sori 설치 =====
 where python >nul 2>nul || (echo [!] 파이썬이 없어요. https://www.python.org 에서 3.10 이상을 설치하고 "Add to PATH"를 꼭 체크하세요. & pause & exit /b 1)
 if not exist venv (
   echo [1/3] 가상환경 만드는 중...

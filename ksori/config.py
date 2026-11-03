@@ -8,8 +8,11 @@ DEFAULTS = {
     "language": "Korean",
     "voices_dir": "voices",         # 목소리 폴더(voices/<이름>/clips, list.csv, voice.json)
     "output_dir": "output",
+    "emotions_dir": "emotions",     # 감정 숫자(emotion-build 결과)를 두는 곳
     "narrator": "나레",             # 기준 목소리(다른 배역 크기를 이 목소리에 맞춤)
-    "speakers": {                   # 배역 = 목소리 섞기. method: average(조각 평균, 안정적) / single(참고 녹음 한 개)
+    # 배역 = 목소리 섞기. method: average(조각 평균, 안정적) / single(참고 녹음 한 개)
+    # 감정: "emotion": {"type": "sad"/"happy"/"angry", "alpha": 세기} (emotion-build 먼저, 1.7B 권장)
+    "speakers": {
         "나레": {"mix": [["내목소리", 100]], "method": "average", "gender": ""}
     },
     "quote_speakers": [],           # 대본의 따옴표 대사가 나오는 순서대로 배역 이름
@@ -40,7 +43,7 @@ def load(path=None):
             else:
                 cfg[k] = v
         base = os.path.dirname(os.path.abspath(path))
-    for k in ("voices_dir", "output_dir"):
+    for k in ("voices_dir", "output_dir", "emotions_dir"):
         if not os.path.isabs(cfg[k]):
             cfg[k] = os.path.join(base, cfg[k])
     if cfg["narrator"] not in cfg["speakers"]:

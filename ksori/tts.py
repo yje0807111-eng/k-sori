@@ -129,6 +129,15 @@ class Engine:
                 raise SystemExit(f"[목소리 없음] '{vn}' — {self.cfg['voices_dir']} 안에 폴더가 있는지 확인하세요")
             parts.append((self.voices[vn], r / 100))
         es = [self._embedding(v, s.get("method", "average")) for v, _ in parts]; ws = [w for _, w in parts]
+        emo = s.get("emotion")
+        if emo and float(emo.get("alpha", 0)):        # 감정: 목소리마다 그 성별의 감정 숫자를 세기만큼 더함
+            from .emotion import tau, KO, NAMES
+            for i, (v, _) in enumerate(parts):
+                g = v.get("gender") or s.get("gender", "")
+                if not g:
+                    raise SystemExit(f"[감정] '{v['name']}' 성별을 몰라요 — voices/{v['name']}/voice.json 에 gender 를 적어 주세요")
+                es[i] = es[i] + float(emo["alpha"]) * tau(self.cfg, emo["type"], g).to(es[i].device).reshape(es[i].shape)
+            self.log(f"[감정] {name}: {NAMES.get(emo['type'], emo['type'])} 세기 {emo['alpha']}")
         m = sum(w * e for w, e in zip(ws, es)); m = m * (sum(w * e.norm() for w, e in zip(ws, es)) / (m.norm() + 1e-9))
         p0 = self._prompt(parts[0][0])
         it = dataclasses.replace(p0, ref_spk_embedding=m.to(p0.ref_spk_embedding.dtype).reshape(p0.ref_spk_embedding.shape),

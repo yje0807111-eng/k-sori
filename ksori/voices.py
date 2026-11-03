@@ -5,7 +5,7 @@ voices/<이름>/
     clips/*.wav     목소리 조각(24kHz 모노, 2~12초, 잡음 없이)
     list.csv        file,sec,text  (조각 파일 이름, 길이(초), 그 조각에서 말한 글)
     voice.json      {"gender": "남"} 또는 {"gender": "여"}
-조각은 `python -m knarr add-voice` 로 녹음 파일에서 자동으로 만들 수 있다."""
+조각은 `python -m ksori add-voice` 로 녹음 파일에서 자동으로 만들 수 있다."""
 import csv, json, os
 
 

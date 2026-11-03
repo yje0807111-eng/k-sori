@@ -5,7 +5,8 @@
 - 한 줄 = 한 문장(또는 쉼표로 이어지는 한 덩이). 빈 줄 = 문단 쉼.
 - 큰따옴표/작은따옴표 안은 대사 → 설정의 quote_speakers 순서대로 배역이 바뀜.
 - 줄에 `//` 만 있으면 큰 쉼(이야기 → 설교처럼 장면이 바뀌는 곳).
-- 쉼표로 끝나지 않는 줄 끝에는 숨 고르는 쉼표가 자동으로 붙음."""
+- 쉼표로 끝나지 않는 줄 끝에는 숨 고르는 쉼표가 자동으로 붙음.
+- 줄 앞에 [배역이름] 을 쓰면 그 줄만 그 배역으로 읽음(예: [슬픈나레] 그날 밤 그는 울었습니다.)."""
 import re
 
 
@@ -26,6 +27,10 @@ def parse(text, cfg):
             ev.append(("section",)); continue
         if not s:
             ev.append(("para", in_q)); continue
+        m = re.match(r"^\[([^\]]+)\]\s*", s)     # 줄 앞 [배역] = 이 줄만 그 배역(예: 감정 넣은 나레이션)
+        line_spk = None
+        if m and m.group(1) in cfg["speakers"] and not in_q:
+            line_spk = m.group(1); s = s[m.end():]; spk = line_spk
         if not re.search(r"[,\.\!\?…'\"”’]$", s):
             s += ","
         buf = ""
@@ -44,6 +49,8 @@ def parse(text, cfg):
                 buf += ch
         if buf.strip():
             ev.append(("text", spk, buf.strip()))
+        if line_spk and not in_q:
+            spk = nar
     if qn != len(qspk):
         raise SystemExit(f"[대본 오류] 따옴표 대사 {qn}개인데 quote_speakers 는 {len(qspk)}개예요")
     runs = []; cur = None

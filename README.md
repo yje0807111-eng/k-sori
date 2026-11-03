@@ -1,13 +1,15 @@
-# K-Narrator — 내 컴퓨터에서 만드는 한국어 나레이션
+# K-Sori (케이소리) — 내 컴퓨터에서 만드는 한국어 목소리·나레이션
+
+> **소리(Sori)** = 한국어로 "목소리, 소리". 내 목소리를 섞고, 감정을 담고, 긴 대본을 자연스러운 나레이션으로.
 
 **무료 · 횟수 제한 없음 · 인터넷에 목소리를 올리지 않음.**
 내 목소리(또는 허락받은 가족 목소리)로, 대본 한 편을 사람이 다듬은 것처럼 자연스러운 나레이션으로 만들어 줍니다.
 [Qwen3-TTS](https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-Base)(Apache-2.0)를 바탕으로, 실제 유튜브 설교·이야기 영상을 매일 만들면서 다듬은 "나레이션 공정"을 담았습니다.
 
-> English summary: Local, free Korean narration pipeline on top of Qwen3-TTS. Mix voices, record several takes per sentence, auto-reject broken / gender-flipped takes, verify with Whisper and re-record only the wrong sentences, then assemble with natural pauses and a timeline CSV for subtitles.
+> English summary: **K-Sori** ("sori" = voice/sound in Korean) is a local, free Korean voice & narration pipeline on top of Qwen3-TTS. Mix voices, add emotions (calm, happy, sad, angry, fearful, disgust, surprised), record several takes per sentence, auto-reject broken / gender-flipped takes, verify with Whisper and re-record only the wrong sentences, then assemble with natural pauses and a timeline CSV for subtitles.
 
 ## 무엇이 다른가요?
-TTS 프로그램은 많지만, 긴 대본을 그대로 넣으면 중간에 소리가 깨지거나, 말끝이 잘리거나, 글을 틀리게 읽는 문장이 꼭 섞입니다. K-Narrator 는 그걸 사람이 일일이 듣고 고치지 않아도 되게 만든 **공정**입니다.
+TTS 프로그램은 많지만, 긴 대본을 그대로 넣으면 중간에 소리가 깨지거나, 말끝이 잘리거나, 글을 틀리게 읽는 문장이 꼭 섞입니다. K-Sori 는 그걸 사람이 일일이 듣고 고치지 않아도 되게 만든 **공정**입니다.
 
 | 단계 | 하는 일 |
 |---|---|
@@ -20,6 +22,7 @@ TTS 프로그램은 많지만, 긴 대본을 그대로 넣으면 중간에 소�
 | 받아쓰기 검사 | Whisper 로 받아써서 글이 다르거나 끝이 잘린 문장만 다시 녹음(장·절 숫자는 정확히 비교) |
 | 끝소리 보호 | 문장 끝에 잠깐 " 네." 를 붙여 만든 뒤 잘라내서 마지막 음절이 끊기지 않게 |
 | 이어 붙이기 | 문장 0.9초 · 쉼표 0.55초 · 문단 1.15초 · 장면 1.5초 쉼, 대사 배역 크기 맞춤 |
+| 감정 넣기 | 같은 목소리로 차분함·기쁨·슬픔·분노·두려움·혐오·놀람(감정 숫자 × 세기), 배역마다 또는 줄마다, 감정 견본 페이지 |
 | 결과 | `narration.wav` + 문장마다 시각이 적힌 `timeline.csv`(자막·영상 맞추기용) + 검사표 |
 
 ## 필요한 것
@@ -29,22 +32,22 @@ TTS 프로그램은 많지만, 긴 대본을 그대로 넣으면 중간에 소�
 - 처음 실행할 때 인터넷(모델 내려받기). 그다음부터는 인터넷 없이도 됩니다.
 
 ## 설치
-1. 이 저장소를 내려받아 압축을 풉니다(한글·띄어쓰기 없는 경로 권장, 예: `D:\k-narrator`).
+1. 이 저장소를 내려받아 압축을 풉니다(한글·띄어쓰기 없는 경로 권장, 예: `D:\k-sori`).
 2. `설치.bat` 을 더블클릭합니다. (가상환경 · 그래픽카드용 torch · 나머지를 자동으로 깝니다)
 
 ## 처음 해 보기
 ```bat
 :: 1) 내 목소리 만들기 (녹음 파일 또는 폴더, 잡음 없는 5분 이상 권장)
-knarr.bat add-voice 내목소리 D:\녹음\내목소리.mp3 --gender 남
+ksori.bat add-voice 내목소리 D:\녹음\내목소리.mp3 --gender 남
 
 :: 2) 설정 파일 만들기: examples\설정_예시.json 을 이 폴더에 "설정.json" 으로 복사하고
 ::    speakers 의 목소리 이름을 "내목소리" 로 바꿉니다. (아래 '설정' 참고)
 
 :: 3) 한 문장 들어 보기
-knarr.bat say "안녕하세요, 오늘도 좋은 하루 되세요."
+ksori.bat say "안녕하세요, 오늘도 좋은 하루 되세요."
 
 :: 4) 대본 전체 나레이션
-knarr.bat narrate examples\대본_예시.txt
+ksori.bat narrate examples\대본_예시.txt
 ```
 결과는 `output\<대본 이름>\narration.wav` 에 생깁니다. 중간에 멈춰도 다시 실행하면 만든 테이크는 건너뛰고 이어서 합니다.
 
@@ -53,6 +56,7 @@ knarr.bat narrate examples\대본_예시.txt
 - `"대사"`, `'속마음'` 처럼 따옴표 안은 대사 → 설정의 `quote_speakers` 순서대로 배역이 바뀝니다.
 - 따옴표지만 대사가 아닌 말(예: `'가족'`)은 `word_quotes` 에 적으면 나레이션이 그대로 읽습니다.
 - 줄에 `//` 만 쓰면 장면이 바뀌는 큰 쉼(1.5초).
+- 줄 앞에 `[배역이름]` 을 쓰면 그 줄만 그 배역으로 읽습니다(감정 나레이션 등).
 - 숫자는 소리로 읽는 법을 `tts_fix` 에 적으세요. 예: `["21장 4절", "이십일 장 사 절"]` (받아쓰기 검사는 숫자 그대로 비교해서 12장으로 잘못 읽으면 걸러 냄)
 
 ## 설정 (설정.json)
@@ -70,6 +74,53 @@ knarr.bat narrate examples\대본_예시.txt
 
 `gender` 를 적어 두면 그 배역의 성별 튐 검사를 합니다. 남녀 목소리를 섞은 배역일수록 꼭 적으세요.
 
+## 감정 넣기 (차분함 · 기쁨 · 슬픔 · 분노 · 두려움 · 혐오 · 놀람)
+목소리 숫자에 **감정 방향**을 더해서, 같은 목소리로 감정을 실어 읽게 합니다. (1.7B 모델 권장 — 0.6B 는 감정이 잘 안 실려요)
+
+**1) 감정 숫자 만들기 (처음 한 번, 내 컴퓨터에서만)**
+감정 자료는 저장소에 들어 있지 않습니다. 둘 중 하나를 준비하세요.
+- **RAVDESS** — https://zenodo.org/records/1188976 에서 `Audio_Speech_Actors_01-24.zip`(또는 노래판 `Audio_Song_Actors_01-24.zip`)을 받아 압축을 풉니다.
+  ⚠ RAVDESS 는 **CC BY-NC-SA 4.0(비상업용)** 입니다. 이것으로 만든 감정 소리를 돈 버는 데 쓰지 마세요.
+- **내 감정 녹음** — 상업용으로 쓰려면 이 방법. 여러 사람이 같은 글을 평소·감정으로 읽은 녹음을 이렇게 둡니다.
+  ```
+  감정녹음/
+    철수__남/neutral/*.wav  sad/*.wav  happy/*.wav  angry/*.wav
+    영희__여/neutral/*.wav  sad/*.wav  ...
+  ```
+```bat
+ksori.bat emotion-build D:\자료\RAVDESS
+```
+→ `emotions\emotions_1.7.pt` 가 생깁니다(같은 성별 사람들의 "감정 − 평소" 평균).
+
+**2) 감정 배역 만들기 (설정.json)**
+```json
+"speakers": {
+  "나레":     {"mix": [["내목소리", 100]], "gender": "남"},
+  "슬픈나레": {"mix": [["내목소리", 100]], "gender": "남", "emotion": {"type": "sad",   "alpha": 5}},
+  "기쁜아이": {"mix": [["딸목소리", 100]], "gender": "여", "emotion": {"type": "happy", "alpha": 1.5}}
+}
+```
+**3) 대본에서 쓰기**
+- 대사는 `quote_speakers` 에 감정 배역 이름을 넣으면 됩니다.
+- 나레이션 한 줄만 감정을 넣으려면 줄 앞에 `[슬픈나레]` 를 붙이세요: `[슬픈나레] 그날 밤 그는 홀로 울었습니다.`
+
+**세기(alpha) 고르는 법** — 사람마다 한계가 달라요. 견본 명령으로 한 번에 들어 보고 고르세요.
+```bat
+ksori.bat emotion-samples 내목소리
+```
+→ `output\감정견본_내목소리\듣기.html` : 같은 문장을 감정마다 세기 3단계(추천값·낮게·높게)로 만들어 줍니다. 아이 목소리는 `voice.json` 에 `"age": "아이"` 를 적으면 낮은 세기로 시작해요.
+| 감정 | 남자 어른 | 여자 어른 | 아이 |
+|---|---|---|---|
+| 슬픔 `sad` | 4.5 ~ 5 | 2 ~ 2.5 | 1.5 ~ 2 |
+| 기쁨 `happy` | 3 ~ 4 | 1.5 ~ 2 | 1 ~ 1.5 |
+| 분노 `angry` | 2 ~ 3 | 1 ~ 3 | 1 ~ 2 |
+| 차분함 `calm` · 두려움 `fearful` · 혐오 `disgust` · 놀람 `surprised` | 2.5 ~ 3 | 1.5 | 1 ~ 1.5 |
+
+`type` 은 영어(`sad`)나 한국어(`슬픔`) 둘 다 됩니다.
+- 너무 세면 목소리가 다른 사람처럼 바뀌거나 기계음이 납니다. 한 문장은 좋은데 다음 문장에서 목소리가 변하면 세기를 0.5 낮추세요.
+- 감정 배역을 감정 없는 목소리와 섞으면 감정이 옅어지고, 센 감정(8 이상) 두 개를 섞으면 소리가 찢어집니다.
+- 아이 목소리는 감정 자료가 어른이라 세기를 올리면 어른처럼 들려요 → 낮게.
+
 ## 결과 폴더
 ```
 output/<이름>/
@@ -86,7 +137,7 @@ RTX 2060(6GB) 기준, 문장 67개(약 5분 나레이션)에 녹음·검사까�
 ## 알려진 한계
 - 한국어로만 다듬고 시험했습니다(다른 언어는 `language` 를 바꾸면 돌아가지만 검사 기준은 한국어용).
 - Qwen 계열은 가끔 말끝을 흐리거나 문장 끝에 군소리를 붙입니다 — 끝소리 보호와 받아쓰기 검사로 대부분 걸러 내지만 완벽하지는 않아요. `report.csv` 의 X 표시 문장은 직접 들어 보세요.
-- 감정 넣기(슬프게·기쁘게)는 아직 없습니다(감정 자료 라이선스 문제로 다음 판에서 따로 제공 예정).
+- 감정 자료는 직접 준비해야 합니다(위 '감정 넣기'). RAVDESS 노래판에는 혐오·놀람이 없어요.
 
 ## 지켜 주세요
 - **본인 목소리 또는 사용을 허락받은 목소리만** 쓰세요. 다른 사람인 척하거나 속이는 데 쓰면 안 됩니다.
