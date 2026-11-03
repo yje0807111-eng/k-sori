@@ -42,11 +42,19 @@ class Job:
     def _save(self, f, v):
         json.dump(v, open(os.path.join(self.out, f), "w", encoding="utf-8"), ensure_ascii=False)
 
+    def sig(self, pid):
+        """문장 글 + 배역 설정(목소리 섞기·감정) + 모델이 같을 때만 같은 테이크를 다시 씀 — 설정을 바꾸면 새로 녹음"""
+        import hashlib
+        p = self.pieces[pid - 1]
+        key = json.dumps([p["text"], p["spk"], self.cfg["speakers"][p["spk"]], self.cfg["model"]], ensure_ascii=False, sort_keys=True)
+        return hashlib.md5(key.encode("utf-8")).hexdigest()[:6]
+
     def tf(self, pid, k):
-        return os.path.join(self.tk, f"{pid:03d}_t{k}.wav")
+        return os.path.join(self.tk, f"{pid:03d}_{self.sig(pid)}_t{k}.wav")
 
     def takes(self, pid):
-        return sorted(int(n.split("_t")[1][:-4]) for n in self.cache if n.startswith(f"{pid:03d}_t"))
+        pre = f"{pid:03d}_{self.sig(pid)}_t"
+        return sorted(int(n[len(pre):-4]) for n in self.cache if n.startswith(pre))
 
     def tdict(self):
         return {p["id"]: {k: self.cache[os.path.basename(self.tf(p["id"], k))] for k in self.takes(p["id"])} for p in self.pieces}

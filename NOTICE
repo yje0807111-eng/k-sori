@@ -10,4 +10,6 @@ It uses (not bundled; installed separately by pip / downloaded at first run):
 - PyTorch — BSD-style license
 - soundfile / libsndfile — BSD 3-Clause / LGPL
 
-No voice data is included. Users must only use recordings they have the right to use.
+Included voices (voices/CV*): 42 speakers selected from Mozilla Common Voice Korean, released under CC0-1.0
+(https://commonvoice.mozilla.org). Names are nicknames, not the contributors' identities.
+No other voice data is included. Users must only use recordings they have the right to use.

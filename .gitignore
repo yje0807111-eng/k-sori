@@ -4,8 +4,12 @@ __pycache__/
 output/
 voices/*/
 !voices/README.md
+!voices/목록.md
+!voices/CV*/
+!voices/CV*/**
 설정.json
 *.wav
+!voices/CV*/clips/*.wav
 *.mp3
 설치_시험로그.txt
 emotions/

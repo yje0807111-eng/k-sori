@@ -1,0 +1,50 @@
+{
+ "model": "1.7",
+ "voices_dir": "../voices",
+ "output_dir": "../output",
+ "emotions_dir": "../emotions",
+ "narrator": "나레",
+ "speakers": {
+  "나레": {
+   "mix": [
+    [
+     "CV040_수호",
+     100
+    ]
+   ],
+   "method": "average",
+   "gender": "남"
+  },
+  "여자": {
+   "mix": [
+    [
+     "CV025_지은",
+     100
+    ]
+   ],
+   "method": "average",
+   "gender": "여"
+  },
+  "섞은목소리": {
+   "mix": [
+    [
+     "CV001_세훈",
+     50
+    ],
+    [
+     "CV012_형준",
+     50
+    ]
+   ],
+   "method": "average",
+   "gender": "남"
+  }
+ },
+ "quote_speakers": [
+  "여자"
+ ],
+ "takes": 2,
+ "max_takes": 3,
+ "asr": true,
+ "asr_model": "medium"
+}
