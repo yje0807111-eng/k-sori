@@ -8,6 +8,18 @@
 
 > English summary: **K-Sori** ("sori" = voice/sound in Korean) is a local, free Korean voice & narration pipeline on top of Qwen3-TTS. Mix voices, add emotions (calm, happy, sad, angry, fearful, disgust, surprised), record several takes per sentence, auto-reject broken / gender-flipped takes, verify with Whisper and re-record only the wrong sentences, then assemble with natural pauses and a timeline CSV for subtitles.
 
+## 🎬 K-Sori 로 만든 영상
+매일 올라가는 복음 이야기·설교 영상의 나레이션을 **모두 K-Sori 로 만들고 있습니다.** 어떤 소리가 나는지 영상으로 직접 들어 보세요.
+
+[![YouTube 호세아 @천국메신저](https://img.shields.io/badge/YouTube-%ED%98%B8%EC%84%B8%EC%95%84%20%40%EC%B2%9C%EA%B5%AD%EB%A9%94%EC%8B%A0%EC%A0%80-FF0000?logo=youtube&logoColor=white)](https://www.youtube.com/@%EC%B2%9C%EA%B5%AD%EB%A9%94%EC%8B%A0%EC%A0%80)
+[![TikTok @gi7777gi](https://img.shields.io/badge/TikTok-%40gi7777gi-000000?logo=tiktok&logoColor=white)](https://www.tiktok.com/@gi7777gi)
+
+- **YouTube — 호세아 (@천국메신저)**: https://www.youtube.com/@천국메신저
+- **TikTok — @gi7777gi**: https://www.tiktok.com/@gi7777gi
+
+> 이 도구가 도움이 됐다면 채널 **구독·좋아요**와 이 저장소의 **⭐ Star** 가 큰 힘이 됩니다.
+> K-Sori 로 영상을 만드셨다면 설명란에 "나레이션: K-Sori" 와 이 저장소 주소를 적어 주세요 — 서로의 채널을 알리는 데 도움이 돼요.
+
 ## 무엇이 다른가요?
 TTS 프로그램은 많지만, 긴 대본을 그대로 넣으면 중간에 소리가 깨지거나, 말끝이 잘리거나, 글을 틀리게 읽는 문장이 꼭 섞입니다. K-Sori 는 그걸 사람이 일일이 듣고 고치지 않아도 되게 만든 **공정**입니다.
 
@@ -151,6 +163,13 @@ RTX 2060(6GB) 기준, 문장 67개(약 5분 나레이션)에 녹음·검사까�
 ## 지켜 주세요
 - **본인 목소리 또는 사용을 허락받은 목소리만** 쓰세요. 다른 사람인 척하거나 속이는 데 쓰면 안 됩니다.
 - 이 저장소에 들어 있는 목소리는 Common Voice(CC0) 공개 목소리뿐입니다. 이름은 구별용 별명이며 기증자를 찾아내려 하면 안 됩니다.
+
+## 응원하기 💛
+K-Sori 는 무료입니다. 도움이 됐다면 이렇게 응원해 주세요.
+- 이 저장소에 **⭐ Star** 누르기 (다른 사람들이 찾기 쉬워져요)
+- 유튜브 **[호세아 @천국메신저](https://www.youtube.com/@%EC%B2%9C%EA%B5%AD%EB%A9%94%EC%8B%A0%EC%A0%80)** · 틱톡 **[@gi7777gi](https://www.tiktok.com/@gi7777gi)** 구독·좋아요
+- 저장소 위쪽 **Sponsor(후원)** 버튼
+- 고장 신고·좋은 생각은 [Issues](../../issues) 에 남겨 주세요
 
 ## 라이선스
 Apache License 2.0 (`LICENSE`). 쓰는 모델·라이브러리의 라이선스는 `NOTICE` 를 보세요.
