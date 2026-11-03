@@ -1,0 +1,13 @@
+K-Narrator
+Copyright 2026 K-Narrator contributors
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+It uses (not bundled; installed separately by pip / downloaded at first run):
+- Qwen3-TTS (Qwen/Qwen3-TTS-12Hz-1.7B-Base, -0.6B-Base) and the qwen-tts package — Apache License 2.0, Alibaba Qwen team
+- OpenAI Whisper — MIT License
+- librosa — ISC License
+- PyTorch — BSD-style license
+- soundfile / libsndfile — BSD 3-Clause / LGPL
+
+No voice data is included. Users must only use recordings they have the right to use.

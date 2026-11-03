@@ -1,0 +1,17 @@
+{
+ "model": "1.7",
+ "voices_dir": "../voices",
+ "output_dir": "../output",
+ "narrator": "나레",
+ "speakers": {
+  "나레": {"mix": [["목소리A", 60], ["목소리B", 40]], "method": "average", "gender": "남"},
+  "아이": {"mix": [["목소리C", 100]], "method": "single", "gender": "여"}
+ },
+ "quote_speakers": ["아이"],
+ "word_quotes": ["'가족'"],
+ "tts_fix": [["21장 4절", "이십일 장 사 절"]],
+ "takes": 3,
+ "max_takes": 5,
+ "asr": true,
+ "asr_model": "medium"
+}

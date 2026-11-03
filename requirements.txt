@@ -1,0 +1,6 @@
+# 그래픽카드용 torch 는 설치.bat 이 먼저 깐다 (pip install torch --index-url https://download.pytorch.org/whl/cu126)
+qwen-tts>=0.1.1
+openai-whisper
+librosa>=0.10
+soundfile>=0.12
+numpy

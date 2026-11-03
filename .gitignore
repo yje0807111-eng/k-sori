@@ -1,0 +1,10 @@
+venv/
+__pycache__/
+*.pyc
+output/
+voices/*/
+!voices/README.md
+설정.json
+*.wav
+*.mp3
+설치_시험로그.txt
