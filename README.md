@@ -13,9 +13,11 @@
 
 [![YouTube 호세아 @천국메신저](https://img.shields.io/badge/YouTube-%ED%98%B8%EC%84%B8%EC%95%84%20%40%EC%B2%9C%EA%B5%AD%EB%A9%94%EC%8B%A0%EC%A0%80-FF0000?logo=youtube&logoColor=white)](https://www.youtube.com/@%EC%B2%9C%EA%B5%AD%EB%A9%94%EC%8B%A0%EC%A0%80)
 [![TikTok @gi7777gi](https://img.shields.io/badge/TikTok-%40gi7777gi-000000?logo=tiktok&logoColor=white)](https://www.tiktok.com/@gi7777gi)
+[![Instagram @parkgisun777](https://img.shields.io/badge/Instagram-%40parkgisun777-E4405F?logo=instagram&logoColor=white)](https://www.instagram.com/parkgisun777/)
 
 - **YouTube — 호세아 (@천국메신저)**: https://www.youtube.com/@천국메신저
 - **TikTok — @gi7777gi**: https://www.tiktok.com/@gi7777gi
+- **Instagram — @parkgisun777**: https://www.instagram.com/parkgisun777/
 
 > 이 도구가 도움이 됐다면 채널 **구독·좋아요**와 이 저장소의 **⭐ Star** 가 큰 힘이 됩니다.
 > K-Sori 로 영상을 만드셨다면 설명란에 "나레이션: K-Sori" 와 이 저장소 주소를 적어 주세요 — 서로의 채널을 알리는 데 도움이 돼요.
@@ -167,7 +169,7 @@ RTX 2060(6GB) 기준, 문장 67개(약 5분 나레이션)에 녹음·검사까�
 ## 응원하기 💛
 K-Sori 는 무료입니다. 도움이 됐다면 이렇게 응원해 주세요.
 - 이 저장소에 **⭐ Star** 누르기 (다른 사람들이 찾기 쉬워져요)
-- 유튜브 **[호세아 @천국메신저](https://www.youtube.com/@%EC%B2%9C%EA%B5%AD%EB%A9%94%EC%8B%A0%EC%A0%80)** · 틱톡 **[@gi7777gi](https://www.tiktok.com/@gi7777gi)** 구독·좋아요
+- 유튜브 **[호세아 @천국메신저](https://www.youtube.com/@%EC%B2%9C%EA%B5%AD%EB%A9%94%EC%8B%A0%EC%A0%80)** · 틱톡 **[@gi7777gi](https://www.tiktok.com/@gi7777gi)** · 인스타그램 **[@parkgisun777](https://www.instagram.com/parkgisun777/)** 구독·좋아요·팔로우
 - 저장소 위쪽 **Sponsor(후원)** 버튼
 - 고장 신고·좋은 생각은 [Issues](../../issues) 에 남겨 주세요
 
