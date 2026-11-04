@@ -12,4 +12,15 @@ It uses (not bundled; installed separately by pip / downloaded at first run):
 
 Included voices (voices/CV*): 42 speakers selected from Mozilla Common Voice Korean, released under CC0-1.0
 (https://commonvoice.mozilla.org). Names are nicknames, not the contributors' identities.
+In line with the Common Voice terms, do not attempt to determine the identity of any speaker.
 No other voice data is included. Users must only use recordings they have the right to use.
+
+Not included: emotion data (e.g. RAVDESS, CC BY-NC-SA 4.0). If you download it yourself, follow its own
+non-commercial terms. Model weights are downloaded from their official sources at first run and are not
+redistributed here.
+
+AI-generated audio: WAV files written by K-Sori carry an "AI-generated speech made with K-Sori" tag in
+their metadata. Please also disclose AI-generated audio when you publish it.
+
+K-Sori is provided "AS IS", without warranties or liability (Apache License 2.0, Sections 7 and 8).
+Users are responsible for how they use the audio they create.

@@ -44,10 +44,10 @@ def main(argv=None):
         for v in vs.values():
             print(f"- {v['name']} ({v['gender'] or '성별?'}) · 조각 {len(v['rows'])}개 · {sum(r['sec'] for r in v['rows']) / 60:.1f}분")
     elif args.cmd == "say":
-        import soundfile as sf
+        from . import aimark
         from .tts import Engine
         e = Engine(cfg).load(); w, sr = e.say(args.text, args.speaker or cfg["narrator"], args.seed)
-        sf.write(args.out, w, sr); print("저장:", os.path.abspath(args.out))
+        aimark.write(args.out, w, sr); print("저장:", os.path.abspath(args.out))
     elif args.cmd == "emotion-build":
         from .emotion import build as ebuild
         ebuild(args.src, cfg)

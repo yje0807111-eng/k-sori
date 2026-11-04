@@ -8,6 +8,7 @@
 이미 만든 테이크는 다시 만들지 않으므로 중간에 멈췄다가 다시 실행해도 이어서 한다."""
 import csv, difflib, json, os, re, time, traceback
 import numpy as np, soundfile as sf
+from . import aimark
 from . import quality as Q
 from .script import parse, hang
 from .tts import Engine
@@ -228,7 +229,7 @@ class Job:
         full = np.concatenate(seq); pk = np.abs(full).max()
         if pk > 0.97:
             full *= 0.97 / pk
-        sf.write(os.path.join(self.out, "narration.wav"), full, SR, subtype="PCM_16")
+        aimark.write(os.path.join(self.out, "narration.wav"), full, SR)
         csv.writer(open(os.path.join(self.out, "timeline.csv"), "w", encoding="utf-8-sig", newline="")).writerows(rows)
         vals = {}
         for p, r in zip(self.pieces, rows[1:]):

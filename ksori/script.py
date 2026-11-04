@@ -95,8 +95,10 @@ def parse(text, cfg):
             if c:
                 flat.append([c, "sent"])
         mg = []
-        for s, k in flat:     # 8자 안 되는 짧은 문장은 앞뒤와 붙여 읽음(혼자 읽으면 억양이 어색)
-            if mg and (len(mg[-1][0]) < 8 or len(s) < 8):
+        for j, (s, k) in enumerate(flat):     # 8자 안 되는 짧은 문장은 앞뒤와 붙여 읽음(혼자 읽으면 억양이 어색)
+            # 단, 덩이의 마지막 짧은 말(예: "…받으세요. 케이소리.")은 붙이지 않음 — 붙이면 끝소리 보호가 말끝 군소리로 알고 잘라 버림(11-03)
+            last_short = j == len(flat) - 1 and len(s) < 8 and len(mg[-1][0]) >= 8 if mg else False
+            if mg and (len(mg[-1][0]) < 8 or len(s) < 8) and not last_short:
                 mg[-1] = [mg[-1][0] + " " + s, k]
             else:
                 mg.append([s, k])

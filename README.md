@@ -162,9 +162,17 @@ RTX 2060(6GB) 기준, 문장 67개(약 5분 나레이션)에 녹음·검사까�
 - Qwen 계열은 가끔 말끝을 흐리거나 문장 끝에 군소리를 붙입니다 — 끝소리 보호와 받아쓰기 검사로 대부분 걸러 내지만 완벽하지는 않아요. `report.csv` 의 X 표시 문장은 직접 들어 보세요.
 - 감정 자료는 직접 준비해야 합니다(위 '감정 넣기'). RAVDESS 노래판에는 혐오·놀람이 없어요.
 
-## 지켜 주세요
-- **본인 목소리 또는 사용을 허락받은 목소리만** 쓰세요. 다른 사람인 척하거나 속이는 데 쓰면 안 됩니다.
-- 이 저장소에 들어 있는 목소리는 Common Voice(CC0) 공개 목소리뿐입니다. 이름은 구별용 별명이며 기증자를 찾아내려 하면 안 됩니다.
+## 지켜 주세요 (올바른 사용과 책임)
+- **본인 목소리 또는 사용을 허락받은 목소리만** 쓰세요. 허락 없이 다른 사람의 목소리를 복제하지 마세요.
+- **유명인·연예인·성우의 목소리를 흉내 내지 마세요.** 널리 알려진 사람의 음성을 허락 없이 영업에 쓰면 부정경쟁방지법 위반이 될 수 있습니다.
+- **다른 사람인 척하거나 속이는 데 쓰면 안 됩니다.** 보이스피싱·사기, 가짜 뉴스, 명예훼손, 성적인 딥페이크 등 법을 어기는 일에 쓰지 마세요.
+- **AI로 만든 음성이라는 것을 알려 주세요.** 영상이나 글로 공개할 때 "AI 음성"임을 적어 주세요(AI 기본법의 생성물 표시 취지). K-Sori 가 만든 wav 파일 안에는 "AI-generated speech made with K-Sori" 표시가 자동으로 들어갑니다(귀에는 안 들리고 파일 정보에만 들어감).
+- 이 저장소에 들어 있는 목소리는 Common Voice(CC0) 공개 목소리뿐입니다. 이름은 구별용 별명이며, **기증자가 누구인지 알아내려 하면 안 됩니다**(Common Voice 이용 조건).
+- 감정 자료(RAVDESS)는 이 저장소에 들어 있지 않습니다. 직접 받는 경우 그 자료의 조건(비상업용)을 지켜 주세요.
+- K-Sori 는 **있는 그대로(AS IS)** 무료로 나눕니다. 만든 소리를 어떻게 쓰는지는 쓰는 사람의 책임이며, 만든 사람은 그 사용으로 생긴 손해에 책임지지 않습니다(Apache License 2.0 제7·8조).
+
+### Responsible use (English)
+Use only your own voice or voices you have permission to use. Do not imitate celebrities or real people, and never use K-Sori for impersonation, fraud, misinformation or deepfakes. Disclose that the audio is AI-generated when you publish it; K-Sori writes an "AI-generated speech" tag into every WAV it creates. The bundled voices come from Mozilla Common Voice (CC0) — do not try to identify the contributors. K-Sori is provided "AS IS" without warranty or liability (Apache-2.0, Sections 7–8).
 
 ## 응원하기 💛
 K-Sori 는 무료입니다. 도움이 됐다면 이렇게 응원해 주세요.

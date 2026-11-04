@@ -3,7 +3,7 @@
 
 세기는 성별·나이(voice.json 의 "age": "아이")에 맞춘 추천값으로 시작하고, 낮게·높게 두 단계를 더 만든다."""
 import html, os
-import soundfile as sf
+from . import aimark
 from .emotion import NAMES, out_path
 
 BASE = {"남": {"sad": 5, "happy": 3.5, "angry": 2.5, "calm": 3, "fearful": 3, "disgust": 2.5, "surprised": 3},
@@ -42,7 +42,7 @@ def make(cfg, voice, text=TEXT, steps=(0.7, 1.0, 1.3), log=print):
     rows = []
     for nm, emo, a in plan:
         w, sr = eng.say(text, nm, seed=1234, temp=0.5)
-        sf.write(os.path.join(out, nm + ".wav"), w, sr)
+        aimark.write(os.path.join(out, nm + ".wav"), w, sr)
         rows.append((nm, emo, a)); log(f"  {nm}")
     cards = "".join(
         f'<div class="c"><b>{html.escape(nm.split("_")[0])}</b> <span>{"세기 " + format(a, "g") + (" (추천)" if emo and abs(a - rec[emo]) < 1e-6 else "") if emo else "감정 없음"}</span>'
